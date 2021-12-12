@@ -25,7 +25,7 @@ class LokasiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return Lokasi::create($request->all());
     }
 
     /**

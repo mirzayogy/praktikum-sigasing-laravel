@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/location',[LokasiController::class, 'index']);
+Route::get('/lokasi',[LokasiController::class, 'index']);
+Route::post('/lokasi',[LokasiController::class, 'store']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
