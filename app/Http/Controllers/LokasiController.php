@@ -39,7 +39,7 @@ class LokasiController extends Controller
      */
     public function show($id)
     {
-        //
+        return Lokasi::find($id);
     }
 
     /**
