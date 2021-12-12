@@ -18,6 +18,7 @@ Route::get('/lokasi',[LokasiController::class, 'index']);
 Route::post('/lokasi',[LokasiController::class, 'store']);
 Route::get('/lokasi/{lokasi}',[LokasiController::class, 'show']);
 Route::put('/lokasi/{lokasi}',[LokasiController::class, 'update']);
+Route::delete('/lokasi/{lokasi}',[LokasiController::class, 'destroy']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

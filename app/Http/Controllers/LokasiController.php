@@ -64,6 +64,6 @@ class LokasiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return Lokasi::destroy($id);
     }
 }
