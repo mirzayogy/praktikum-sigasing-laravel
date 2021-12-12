@@ -66,4 +66,8 @@ class LokasiController extends Controller
     {
         return Lokasi::destroy($id);
     }
+
+    public function search($nama_lokasi){
+        return Lokasi::where('nama_lokasi', 'like', '%'.$nama_lokasi.'%')->get();
+    }
 }
