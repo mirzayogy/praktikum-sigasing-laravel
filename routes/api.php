@@ -1,5 +1,5 @@
 <?php
-
+use App\Models\Lokasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/location',function(){
-    return 'Location';
+    return Lokasi::all();
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
