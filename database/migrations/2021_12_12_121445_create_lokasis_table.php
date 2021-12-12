@@ -13,8 +13,9 @@ class CreateLokasisTable extends Migration
      */
     public function up()
     {
-        Schema::create('lokasis', function (Blueprint $table) {
+        Schema::create('lokasi', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_lokasi');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreateLokasisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lokasis');
+        Schema::dropIfExists('lokasi');
     }
 }
