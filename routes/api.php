@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -16,19 +18,32 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/register', [UserController::class, 'register']);
+Route::post('/login', [UserController::class, 'login']);
+
 Route::get('/lokasi',[LokasiController::class, 'index']);
 Route::get('/lokasi/count',[LokasiController::class, 'count']);
 Route::get('/lokasi/count/{nama_lokasi}',[LokasiController::class, 'countWhere']);
 Route::get('/lokasi/{lokasi}',[LokasiController::class, 'show']);
 Route::get('/lokasi/search/{nama_lokasi}',[LokasiController::class, 'search']);
-Route::post('/login', [UserController::class, 'login']);
+
+Route::get('/jabatan', [JabatanController::class, 'index']);
+Route::get('/jabatan/count', [JabatanController::class, 'count']);
+Route::get('/jabatan/count/{nama_jabatan}', [JabatanController::class, 'countWhere']);
+Route::get('/jabatan/{jabatan}', [JabatanController::class, 'show']);
+Route::get('/jabatan/search/{nama_jabatan}', [JabatanController::class, 'search']);
+Route::get('/jabatan/search_more/{gapok_jabatan}', [JabatanController::class, 'searchMore']);
 
 
 Route::group(['middleware' => ['auth:sanctum']], function (){
+    Route::post('/logout', [UserController::class, 'logout']);
+
     Route::post('/lokasi',[LokasiController::class, 'store']);
     Route::put('/lokasi/{lokasi}',[LokasiController::class, 'update']);
     Route::delete('/lokasi/{lokasi}',[LokasiController::class, 'destroy']);
-    Route::post('/logout', [UserController::class, 'logout']);
+
+    Route::post('/jabatan', [JabatanController::class, 'store']);
+    Route::put('/jabatan/{jabatan}', [JabatanController::class, 'update']);
+    Route::delete('/jabatan/{jabatan}', [JabatanController::class, 'destroy']);
 
 });
 
