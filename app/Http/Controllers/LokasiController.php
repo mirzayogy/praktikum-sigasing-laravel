@@ -70,4 +70,19 @@ class LokasiController extends Controller
     public function search($nama_lokasi){
         return Lokasi::where('nama_lokasi', 'like', '%'.$nama_lokasi.'%')->get();
     }
+
+    public function count(){
+        $count = Lokasi::all()->count();
+        return response([
+            'jumlah_lokasi' => $count
+        ],200);
+    }
+
+    public function countWhere($nama_lokasi)
+    {
+        $count = Lokasi::where('nama_lokasi', 'like', '%'.$nama_lokasi.'%')->get()->count();
+        return response([
+            'jumlah_lokasi' => $count
+        ], 200);
+    }
 }

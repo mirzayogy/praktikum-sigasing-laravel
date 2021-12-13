@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/register', [UserController::class, 'register']);
 Route::get('/lokasi',[LokasiController::class, 'index']);
+Route::get('/lokasi/count',[LokasiController::class, 'count']);
+Route::get('/lokasi/count/{nama_lokasi}',[LokasiController::class, 'countWhere']);
 Route::get('/lokasi/{lokasi}',[LokasiController::class, 'show']);
 Route::get('/lokasi/search/{nama_lokasi}',[LokasiController::class, 'search']);
 Route::post('/login', [UserController::class, 'login']);
