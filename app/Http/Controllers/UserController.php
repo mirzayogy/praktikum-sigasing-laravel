@@ -94,4 +94,29 @@ class UserController extends Controller
             'message' => "Logged Out"
         ];
     }
+
+    public function login(Request $request)
+    {
+        $fields = $request->validate([
+            'email' => 'required|string',
+            'password' => 'required|string'
+        ]);
+
+        $user = User::where('email', $fields['email'])->first();
+
+        if(!$user || !Hash::check($fields['password'], $user->password)){
+            return response([
+                'message' => 'Username/Password salah'
+            ], 401);
+        }
+
+        $token = $user->createToken('sigasing')->plainTextToken;
+
+        $response = [
+            'user' => $user,
+            'token' => $token
+        ];
+
+        return response($response, 201);
+    }
 }
