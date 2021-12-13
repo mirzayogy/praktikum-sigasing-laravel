@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\LokasiController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('/register', [UserController::class, 'register']);
 Route::get('/lokasi',[LokasiController::class, 'index']);
 Route::get('/lokasi/{lokasi}',[LokasiController::class, 'show']);
 Route::get('/lokasi/search/{nama_lokasi}',[LokasiController::class, 'search']);
