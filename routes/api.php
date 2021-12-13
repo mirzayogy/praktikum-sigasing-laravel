@@ -24,6 +24,8 @@ Route::group(['middleware' => ['auth:sanctum']], function (){
     Route::post('/lokasi',[LokasiController::class, 'store']);
     Route::put('/lokasi/{lokasi}',[LokasiController::class, 'update']);
     Route::delete('/lokasi/{lokasi}',[LokasiController::class, 'destroy']);
+    Route::post('/logout', [UserController::class, 'logout']);
+
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
