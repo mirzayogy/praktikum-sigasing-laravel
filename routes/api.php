@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -32,6 +33,10 @@ Route::get('/jabatan/count/{nama_jabatan}', [JabatanController::class, 'countWhe
 Route::get('/jabatan/{jabatan}', [JabatanController::class, 'show']);
 Route::get('/jabatan/search/{nama_jabatan}', [JabatanController::class, 'search']);
 Route::get('/jabatan/search_more/{gapok_jabatan}', [JabatanController::class, 'searchMore']);
+
+Route::get('/karyawan', [KaryawanController::class, 'index']);
+Route::get('/karyawan/{karyawan}', [KaryawanController::class, 'show']);
+Route::get('/karyawan/search/{keywords}', [KaryawanController::class, 'search']);
 
 
 Route::group(['middleware' => ['auth:sanctum']], function (){

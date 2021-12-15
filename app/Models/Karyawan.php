@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Karyawan extends Model
 {
@@ -19,5 +20,10 @@ class Karyawan extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function scopeMasa($query)
+    {
+        return $query->addSelect(DB::raw('*, TIMESTAMPDIFF(YEAR, tanggal_masuk, CURDATE()) masa_kerja_tahun'));
     }
 }
