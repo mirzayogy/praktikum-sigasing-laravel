@@ -87,4 +87,27 @@ class PenggunaController extends Controller
 
         return response($response, 201);
     }
+
+    public function register(Request $request)
+    {
+        $fields = $request->validate([
+            'username' => 'required|string|unique:pengguna,username',
+            'password' => 'required|string|confirmed'
+        ]);
+
+        $pengguna = Pengguna::create([
+            'username' => $fields['username'],
+            'password' => bcrypt($fields['password']),
+            'peran' => 'USER'
+        ]);
+
+        $token = $pengguna->createToken('sigasing')->plainTextToken;
+
+        $response = [
+            'pengguna' => $pengguna,
+            'token' => $token
+        ];
+
+        return response($response, 201);
+    }
 }
