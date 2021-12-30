@@ -17,7 +17,7 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-        return Karyawan::masa()->with('user')->get();
+        return Karyawan::masa()->with('pengguna')->get();
     }
 
     /**
@@ -57,7 +57,7 @@ class KaryawanController extends Controller
      */
     public function show($id)
     {
-        return Karyawan::masa()->with('user')->find($id);
+        return Karyawan::masa()->with('pengguna')->find($id);
     }
 
     /**
@@ -85,8 +85,10 @@ class KaryawanController extends Controller
 
     public function search($keywords)
     {
-        return  Karyawan::masa()->with('User')->whereHas('User', function ($q) use ($keywords) {
-            $q->where('users.name', 'like', '%'.$keywords.'%');
-        })->get();
+        // return  Karyawan::masa()->with('Pengguna')->whereHas('Pengguna', function ($q) use ($keywords) {
+        //     $q->where('users.name', 'like', '%'.$keywords.'%');
+        // })->get();
+
+        return Karyawan::where('nama_lengkap', 'like', '%' . $keywords . '%')->get();
     }
 }

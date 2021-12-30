@@ -17,9 +17,9 @@ class Karyawan extends Model
         'user_id'
     ];
 
-    public function user()
+    public function pengguna()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Pengguna::class);
     }
 
     public function scopeMasa($query)
