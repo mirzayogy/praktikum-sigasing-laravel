@@ -43,6 +43,7 @@ Route::get('/karyawan/search/{keywords}', [KaryawanController::class, 'search'])
 
 
 Route::group(['middleware' => ['auth:sanctum']], function (){
+    Route::post('/logoutuser', [UserController::class, 'logout']);
     Route::post('/logout', [PenggunaController::class, 'logout']);
 
     Route::post('/lokasi',[LokasiController::class, 'store']);

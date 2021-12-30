@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pengguna;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class PenggunaController extends Controller
@@ -109,5 +110,14 @@ class PenggunaController extends Controller
         ];
 
         return response($response, 201);
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::user()->tokens()->delete();
+
+        return [
+            'message' => "Logged Out"
+        ];
     }
 }
