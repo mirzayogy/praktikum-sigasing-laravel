@@ -18,9 +18,11 @@ class KaryawanFactory extends Factory
     {
         return [
             'nik' => $this->faker->numberBetween(1000, 2000),
+            'nama_lengkap' => $this->faker->name(),
             'handphone' => $this->faker->phoneNumber(),
+            'email' => $this->faker->unique()->safeEmail(),
             'tanggal_masuk' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
-            'user_id' => \App\Models\User::factory()->create()->id
+            'pengguna_id' => \App\Models\Pengguna::factory()->create()->id
         ];
     }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\LokasiController;
+use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,7 +20,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/register', [UserController::class, 'register']);
-Route::post('/login', [UserController::class, 'login']);
+Route::post('/loginuser', [UserController::class, 'login']);
+Route::post('/login', [PenggunaController::class, 'login']);
 
 Route::get('/lokasi',[LokasiController::class, 'index']);
 Route::get('/lokasi/count',[LokasiController::class, 'count']);
@@ -40,7 +42,7 @@ Route::get('/karyawan/search/{keywords}', [KaryawanController::class, 'search'])
 
 
 Route::group(['middleware' => ['auth:sanctum']], function (){
-    Route::post('/logout', [UserController::class, 'logout']);
+    Route::post('/logout', [PenggunaController::class, 'logout']);
 
     Route::post('/lokasi',[LokasiController::class, 'store']);
     Route::put('/lokasi/{lokasi}',[LokasiController::class, 'update']);

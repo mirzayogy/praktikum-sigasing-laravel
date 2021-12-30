@@ -15,13 +15,15 @@ class CreateKaryawansTable extends Migration
     {
         Schema::create('karyawan', function (Blueprint $table) {
             $table->id();
-            $table->string('nik');
-            $table->string('handphone');
+            $table->string('nik')->unique();
+            $table->string('nama_lengkap');
+            $table->string('handphone')->unique();
+            $table->string('email')->unique();
             $table->date('tanggal_masuk');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('pengguna_id');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')
+            $table->foreign('pengguna_id')->references('id')->on('pengguna')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
         });
