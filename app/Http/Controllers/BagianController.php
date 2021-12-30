@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bagian;
 use Illuminate\Http\Request;
 
 class BagianController extends Controller
@@ -13,7 +14,11 @@ class BagianController extends Controller
      */
     public function index()
     {
-        //
+        return Bagian::with('karyawan')->with('lokasi')->get();
+    }
+
+    public function indexCustom(){
+        return Bagian::with('karyawan:id,nama_lengkap')->get();
     }
 
     /**
@@ -35,7 +40,7 @@ class BagianController extends Controller
      */
     public function show($id)
     {
-        //
+        return Bagian::with('karyawan')->with('lokasi')->find($id);
     }
 
     /**

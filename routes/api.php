@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BagianController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\LokasiController;
@@ -41,6 +42,9 @@ Route::get('/karyawan', [KaryawanController::class, 'index']);
 Route::get('/karyawan/{karyawan}', [KaryawanController::class, 'show']);
 Route::get('/karyawan/search/{keywords}', [KaryawanController::class, 'search']);
 
+Route::get('/bagian', [BagianController::class, 'index']);
+Route::get('/bagian_custom', [BagianController::class, 'indexCustom']);
+Route::get('/bagian/{bagian}', [BagianController::class, 'show']);
 
 Route::group(['middleware' => ['auth:sanctum']], function (){
     Route::post('/logoutuser', [UserController::class, 'logout']);

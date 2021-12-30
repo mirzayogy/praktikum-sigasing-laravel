@@ -13,4 +13,9 @@ class Lokasi extends Model
     protected $fillable = [
         'nama_lokasi'
     ];
+
+    public function bagian()
+    {
+        return $this->hasMany(Bagian::class);
+    }
 }

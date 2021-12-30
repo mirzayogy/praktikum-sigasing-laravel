@@ -22,6 +22,11 @@ class Karyawan extends Model
         return $this->belongsTo(Pengguna::class);
     }
 
+    public function bagian()
+    {
+        return $this->hasMany(Bagian::class);
+    }
+
     public function scopeMasa($query)
     {
         return $query->addSelect(DB::raw('*, TIMESTAMPDIFF(YEAR, tanggal_masuk, CURDATE()) masa_kerja_tahun'));

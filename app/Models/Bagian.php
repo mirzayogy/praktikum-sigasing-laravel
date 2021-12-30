@@ -15,4 +15,12 @@ class Bagian extends Model
         'karyawan_id',
         'lokasi_id',
     ];
+
+    public function karyawan(){
+        return $this->belongsTo(Karyawan::class);
+    }
+
+    public function lokasi(){
+        return $this->belongsTo(Lokasi::class);
+    }
 }
