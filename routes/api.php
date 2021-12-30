@@ -44,6 +44,7 @@ Route::get('/karyawan/search/{keywords}', [KaryawanController::class, 'search'])
 
 Route::get('/bagian', [BagianController::class, 'index']);
 Route::get('/bagian_custom', [BagianController::class, 'indexCustom']);
+Route::get('/bagian_join', [BagianController::class, 'indexJoin']);
 Route::get('/bagian/{bagian}', [BagianController::class, 'show']);
 
 Route::group(['middleware' => ['auth:sanctum']], function (){
