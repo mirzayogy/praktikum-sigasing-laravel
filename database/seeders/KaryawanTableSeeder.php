@@ -15,7 +15,7 @@ class KaryawanTableSeeder extends Seeder
     public function run()
     {
         // $user = factory(App\User::class)->make();
-        \App\Models\Karyawan::factory()->count(5)->create();
+        \App\Models\Karyawan::factory()->count(6)->create();
 
 
     }

@@ -36,6 +36,10 @@ class Karyawan extends Model
 
     public function scopeMasa($query)
     {
-        return $query->addSelect(DB::raw('*, TIMESTAMPDIFF(YEAR, tanggal_masuk, CURDATE()) masa_kerja_tahun'));
+        return $query->addSelect(DB::raw('*,
+        TIMESTAMPDIFF(YEAR, tanggal_masuk, CURDATE()) masa_kerja_tahun,
+        (SELECT J.nama_jabatan FROM jabatan_karyawan JK INNER JOIN jabatan J ON JK.jabatan_id = J.id WHERE JK.karyawan_id = karyawan.id ORDER BY JK.tanggal_mulai DESC LIMIT 1) AS jabatan_terakhir,
+        (SELECT tanggal_mulai FROM jabatan_karyawan JK WHERE karyawan_id = karyawan.id ORDER BY JK.tanggal_mulai DESC LIMIT 1) tanggal_mulai_terakhir
+        '));
     }
 }

@@ -17,7 +17,7 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-        return Karyawan::masa()->with('pengguna')->get();
+        return Karyawan::masa()->with('pengguna')->with('jabatan_karyawan')->get();
     }
 
     /**
