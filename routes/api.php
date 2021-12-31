@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BagianController;
 use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\JabatanKaryawanController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\PenggunaController;
@@ -46,6 +47,9 @@ Route::get('/bagian', [BagianController::class, 'index']);
 Route::get('/bagian_custom', [BagianController::class, 'indexCustom']);
 Route::get('/bagian_join', [BagianController::class, 'indexJoin']);
 Route::get('/bagian/{bagian}', [BagianController::class, 'show']);
+
+Route::get('/jabatan_karyawan', [JabatanKaryawanController::class, 'index']);
+
 
 Route::group(['middleware' => ['auth:sanctum']], function (){
     Route::post('/logoutuser', [UserController::class, 'logout']);

@@ -16,4 +16,9 @@ class Jabatan extends Model
         'tunjangan_jabatan',
         'uang_makan_perhari'
     ];
+
+    public function jabatan_karyawan()
+    {
+        return $this->hasMany(JabatanKaryawan::class);
+    }
 }
